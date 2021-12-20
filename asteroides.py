@@ -1,6 +1,9 @@
-# Conecta con la API de la NASA al servicio NeoWs (Near Earth Object Web Service) y devuelve una lista de asteroides cercanos a la Tierra.
-# Mas info sobre las APIs de la NASA y sus funciones, en https://api.nasa.gov/
+""" 
+Conecta con la API de la NASA al servicio NeoWs (Near Earth Object Web Service) y devuelve una lista de asteroides cercanos a la Tierra.
+Mas info sobre las APIs de la NASA y sus funciones, en https://api.nasa.gov/
+Devuelve un número de objetos variables con cada llamada.
 
+"""
 
 # HACER:
 """
@@ -11,6 +14,7 @@
 
 import requests
 import json
+import re
 
 from datetime import datetime
 
@@ -32,7 +36,7 @@ direccion = "https://api.nasa.gov/neo/rest/v1/feed?&end_date=" + fecha_actual + 
 Hacemos la llamada a la API con la dirección mas la llave: request.lo-que-mande-la-API.json() lo que hace es:
 - request hace la llamada, pero necesita una dirección...
 - .get(dirección + llave) es el método que llama a la dirección de la API, mas la llave que requiere...
-- .json() saca del objeto JSON, la string JSON.
+- .json() saca del objeto JSON, la string JSON:
 """
 
 respuesta = requests.get(direccion + llave).json()
@@ -55,13 +59,35 @@ respuesta = json.dumps(respuesta, indent=4)
 f = open("datos.py", "a")
 f.write(respuesta)
 f.close()
-
+# no es parte del script, solo es para orientarse en el objeto a la hora de acceder a los datos.
 
 
 
 # Pasamos el str a un diccionario de python, para poder acceder a sus valores:
 respuesta = json.loads(respuesta)
 
+
+
+
+#OBTENCIÓN DE LOS CAMPOS NECESARIOS PARA MOSTRAR EN PANTALLA:
+"""
+Recordar que la fecha que está en el path del objeto entre corchetes [2021-algo-algo] tiene que actualizarse cada día
+porque si no devuelve "Key error", porque como llave, varía cada día.
+Meter [2021----] en una variable y usar esa variable como parte del path hacia los datos.
+
+"""
+
+# Función para obtener el valor de la fecha correcto para ser usado como ruta del diccionario generado:
+def fecha_para_ruta(diccionario):
+	
+	# esto genera un "view object", que se pasa a string...
+	fecha_ruta = str(diccionario["near_earth_objects"].keys())
+
+	# ... y extraemos de ese string los caracteres que necesitamos.
+	fecha_ruta = fecha_ruta[11:-2]
+	
+	return fecha_ruta
+	
 
 
 
@@ -75,5 +101,5 @@ respuesta = json.loads(respuesta)
 # Imprime los datos:
 
 print(type(respuesta))
-print(respuesta)
+#print(respuesta)
 
