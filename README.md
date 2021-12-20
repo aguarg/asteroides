@@ -4,3 +4,5 @@ Mas info sobre las APIs de la NASA y sus funciones, en https://api.nasa.gov/
 
 Después de limpiar los datos y traducir al español, devuelve el número de objetos detectados, el nombre del objetos, su tamaño y si representa algún tipo de peligro.
 
+Además, crea un archivo con los datos en formato JSON para análisis y/o consulta posterior.
+
