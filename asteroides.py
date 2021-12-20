@@ -80,15 +80,31 @@ Meter [2021----] en una variable y usar esa variable como parte del path hacia l
 # Función para obtener el valor de la fecha correcto para ser usado como ruta del diccionario generado:
 def fecha_para_ruta(diccionario):
 	
-	# esto genera un "view object", que se pasa a string...
+	# esto usa .keys() para las llaves y genera un "view object". Luego se pasa a string...
 	fecha_ruta = str(diccionario["near_earth_objects"].keys())
 
 	# ... y extraemos de ese string los caracteres que necesitamos.
-	fecha_ruta = fecha_ruta[11:-2]
+	fecha_ruta = fecha_ruta[12:-3]
 	
 	return fecha_ruta
 	
 
+# Esta es la ruta que devuelve todos los asteroides en [2021-algo-algo], la puse para probar. Sacar mas adelante. 
+ruta = respuesta["near_earth_objects"][fecha_para_ruta(respuesta)]
+# Recordar que a partir de ahí, el siguiente elemento en la jerarquía es un elemento de una lista, que a su vez tiene diccionarios.
+
+
+# Vamos a iterar todos juntos de la mano!!!!
+
+
+def obtener_datos(ruta):
+	print("Número de objetos encontrados " + str(respuesta["element_count"]))
+	
+	for dato in ruta:
+		print("Nombre: " + dato["name"])
+		print("Magnitud absoluta: " + str(dato["absolute_magnitude_h"]))
+		print("Diámetro mínimo estimado: " + str(dato["estimated_diameter"]["kilometers"]["estimated_diameter_min"]) + " kilómetros.")
+		print("Diámetro máximo estimado: " + str(dato["estimated_diameter"]["kilometers"]["estimated_diameter_max"]) + " kilómetros.")
 
 
 
@@ -97,9 +113,7 @@ def fecha_para_ruta(diccionario):
 
 
 
+obtener_datos(ruta)
 
-# Imprime los datos:
 
-print(type(respuesta))
-#print(respuesta)
 
