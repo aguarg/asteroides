@@ -94,22 +94,34 @@ ruta = respuesta["near_earth_objects"][fecha_para_ruta(respuesta)]
 # Recordar que a partir de ahí, el siguiente elemento en la jerarquía es un elemento de una lista, que a su vez tiene diccionarios.
 
 
-# Vamos a iterar todos juntos de la mano!!!!
 
 
+# FUNCIÓN PARA ITERAR POR LOS RESULTADOS ENVIADOS POR LA API:
 def obtener_datos(ruta):
-	print("Número de objetos encontrados " + str(respuesta["element_count"]))
+	print()
+	print("OBJETOS EN ÓRBITA DETECTADOS")
+	print("Programa  NeoWs: Near Earth Object Web Service - NASA")
+	print()
+	print("Número de objetos detectados: " + str(respuesta["element_count"]))
+	print()
 	
 	for dato in ruta:
-		print("Nombre: " + dato["name"])
+		
+
+		print("NOMBRE: " + dato["name"])
 		print("Magnitud absoluta: " + str(dato["absolute_magnitude_h"]))
 		print("Diámetro mínimo estimado: " + str(dato["estimated_diameter"]["kilometers"]["estimated_diameter_min"]) + " kilómetros.")
 		print("Diámetro máximo estimado: " + str(dato["estimated_diameter"]["kilometers"]["estimated_diameter_max"]) + " kilómetros.")
+		
 
+		if dato["is_potentially_hazardous_asteroid"] == True:
+			print("¿Representa algún peligro?: SI")
+		else:
+			print("¿Representa algún peligro?: NO")	
+		
 
-
-
-
+		print()
+		print()
 
 
 
