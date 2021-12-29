@@ -5,12 +5,6 @@ Devuelve un número de objetos variables con cada llamada.
 
 """
 
-# HACER:
-"""
-- Iterar por el diccionario y extraer los valores relevantes. No hacer OOP, usar funciones, creo que se va a poder hacer así.
-- Mejorar la presentación de los datos, como una tabla linda.
-"""
-
 
 import requests
 import json
@@ -41,15 +35,13 @@ Hacemos la llamada a la API con la dirección mas la llave: request.lo-que-mande
 
 respuesta = requests.get(direccion + llave).json()
 # Después de agregar el .json, el type() de respuesta es <class 'dict'>, y si hacemos print(respuesta) devuelve
-# los datos en una cadena JSON, muy difícil de leer, por el formato que tiene.
+# los datos en una cadena JSON.
 
 
 
 
 
 # CONVERSIÓN DE LOS DATOS Y FORMATO PARA HACERLO MAS LEGIBLE:
-# Hacemos dumps() para convertir un objeto Python (recordar que casi cualquier cosa puede ser un objeto) a el formato JSON,
-# identado 4 espacios para facilitar la lectura:
 # Hacemos un dumps() para convertir un objeto JSON a un string, identado 4 espacios para facilitar la lectura:
 respuesta = json.dumps(respuesta, indent=4)
 # ... ahora el type() devuelve <class 'str'>, y el print(respuesta) es la info ordenada e identada, mas fácil de leer.
@@ -73,7 +65,7 @@ respuesta = json.loads(respuesta)
 """
 Recordar que la fecha que está en el path del objeto entre corchetes [2021-algo-algo] tiene que actualizarse cada día
 porque si no devuelve "Key error", porque como llave, varía cada día.
-Meter [2021----] en una variable y usar esa variable como parte del path hacia los datos.
+Asignar [2021----] en una variable y usar esa variable como parte del path hacia los datos.
 
 """
 
