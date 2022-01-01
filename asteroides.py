@@ -5,7 +5,7 @@ Devuelve un número de objetos variables con cada llamada.
 
 """
 
-
+# Importamos los módulos necesarios:
 import requests
 import json
 import re
@@ -81,7 +81,7 @@ def fecha_para_ruta(diccionario):
 	return fecha_ruta
 	
 
-# Esta es la ruta que devuelve todos los asteroides en [2021-algo-algo], la puse para probar. Sacar mas adelante. 
+# Esta es la ruta que devuelve todos los asteroides en [2021-algo-algo]. 
 ruta = respuesta["near_earth_objects"][fecha_para_ruta(respuesta)]
 # Recordar que a partir de ahí, el siguiente elemento en la jerarquía es un elemento de una lista, que a su vez tiene diccionarios.
 
