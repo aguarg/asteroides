@@ -5,13 +5,6 @@ Devuelve un número de objetos variables con cada llamada.
 
 """
 
-# HACER:
-"""
-- Iterar por el diccionario y extraer los valores relevantes. No hacer OOP, usar funciones, creo que se va a poder hacer así.
-- Mejorar la presentación de los datos, como una tabla linda.
-"""
-
-
 import requests
 import json
 
