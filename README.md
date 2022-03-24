@@ -6,9 +6,13 @@ Después de limpiar los datos y traducir al español, devuelve el número de obj
 
 Además, crea un archivo con los datos en formato JSON para análisis y/o consulta posterior.
 
+Para el correcto funcionamiento se deben instalar los siguientes módulos: requests y json
 
+# Tracking asteroids close to Earth
 It connects with the NASA's API that sends data from NeoWs (Near Earth Object Web Service) with asteroids that orbit Earth. 
 After parsing and cleaning the data, it translates the relevant info to spanish, and shows the number of objects found, the name, apparent magnitude, size and if it's a threat to the planet and/or vehicles in orbit.
 
 The script also generates a file with all the data in JSON format for posterior analysis. 
+
+It requires the following modules: requests and json
 
